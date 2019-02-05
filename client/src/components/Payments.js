@@ -25,5 +25,3 @@ export default connect(
 	null,
 	actions
 )(Payments);
-
-//adding nonsense to fix commit
