@@ -10,9 +10,33 @@ class Mailer extends helper.Mail {
 		this.subject = subject;
 		this.body = new helper.Content('text/html', content);
 		this.recipients = this.formatAddresses(recipients);
+
+		this.addContent(this.body);
+		this.addClickTracking();
+		this.addRecipients();
 	}
 
-	formatAddresses()
+	formatAddresses(recipients) {
+		return recipients.map(({email}) => {
+			return new helper.Email(email);
+		});
+	}
+
+	addRecipients() {
+		const personalize = new helper.Personalization();
+		this.recipients.forEach((recipient) => {
+			personalize.addTo(recipient);
+		});
+		this.addPersonalization(personalize);
+	}
+
+	addClickTracking() {
+		const trackingSettings = new helper.TrackingSettings();
+		const clickTracking = new helper.ClickTracking(ture, true);
+
+		trackingSettings.setClickTracking(clickTracking);
+		this.addTrackingSettings(trackingSettings);
+	}
 }
 
 module.exports = Mailer;
