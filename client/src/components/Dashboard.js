@@ -15,3 +15,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+//continue filling out the details and styling for the dashboard component
