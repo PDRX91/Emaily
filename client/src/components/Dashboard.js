@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const Dashboard = () => {
 	return (
 		<div>
-			DASHBo
+			DASHBOARD
 			<div className="fixed-action-btn">
 				<Link to="/surveys/new" className="btn-floating btn-large red">
 					<i className="large material-icons">add</i>
@@ -15,5 +15,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-//continue filling out the details and styling for the dashboard component
