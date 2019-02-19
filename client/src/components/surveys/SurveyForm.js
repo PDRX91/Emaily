@@ -23,6 +23,7 @@ class SurveyForm extends Component {
 					{this.renderFields()}
 					<Link to="/surveys" className="red btn-flat white-text">
 						Cancel
+						<i className="material-icons right">close</i>
 					</Link>
 					<button type="submit" className="teal btn-flat right white-text">
 						Next
