@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class SurveyFormReview extends Component {
-	render() {
-		return <div>Survey Form Review</div>;
-	}
-}
+const SurveyReview = () => {
+	return (
+		<div>
+			<h5> Please confirm your entries</h5>
+		</div>
+	);
+};
 
-export default SurveyFormReview;
+export default SurveyReview;
