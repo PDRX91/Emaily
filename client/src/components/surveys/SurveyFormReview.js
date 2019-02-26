@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import formFields from './formFields';
 
 const SurveyFormReview = ({onCancel, formValues}) => {
-	const reviewFields = _.map(formFields, ({name, label}) => { //looping through the formFields object to avoid repition
+	const reviewFields = _.map(formFields, ({name, label}) => {
 		return (
 			<div key={name}>
 				<label>{label}</label>
