@@ -5,6 +5,8 @@ import formFields from './formFields';
 import {withRouter} from 'react-router-dom';
 import * as actions from '../../actions';
 
+//formValues = data input from the form
+//history = special object from react router
 const SurveyFormReview = ({onCancel, formValues, submitSurvey, history}) => {
 	const reviewFields = _.map(formFields, ({name, label}) => {
 		return (

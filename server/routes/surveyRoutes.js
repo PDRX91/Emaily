@@ -11,6 +11,7 @@ module.exports = (app) => {
 		res.send('Thank you for taking our survey!');
 	});
 
+	//dealing with the yes or no clicks on the survey emails
 	app.post('/api/surveys/webhooks', (req, res) => {
 		console.log(req.body);
 		res.send({});
