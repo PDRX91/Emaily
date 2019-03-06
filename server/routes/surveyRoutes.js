@@ -16,11 +16,32 @@ module.exports = (app) => {
 
 	//dealing with the yes or no clicks on the survey emails
 	app.post('/api/surveys/webhooks', (req, res) => {
-		const events = _.map(req.body, (event) => {
-			const pathname = new URL(event.url).pathname;
-			const p = new Path('/api/surveys/:surveyId/:choice');
-			console.log(p.test(pathname));
-		});
+		const p = new Path('/api/surveys/:surveyId/:choice');
+
+		const events = _.chain(req.body)
+			.map(({email, url}) => {
+				const match = p.test(new URL(url).pathname);
+				if (match) {
+					return {email, surveyId: match.surveyId, choice: match.choice};
+				}
+			})
+			.compact()
+			.uniqBy('email', 'surveyId')
+			.value();
+		console.log(events);
+		res.send({});
+
+		/** Pre-lodash chaining refactor */
+		// const events = _.map(req.body, ({email, url}) => {
+		// 	const match = p.test(new URL(url).pathname);
+		// 	if (match) {
+		// 		return {email, surveyId: match.surveyId, choice: match.choice};
+		// 	}
+		// });
+		// const compactEvents = _.compact(events);
+		// const uniqueEvents = _.uniqBy(compactEvents, 'email', 'surveyId');
+		// console.log(uniqueEvents);
+		// res.send({});
 	});
 
 	app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
